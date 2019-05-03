@@ -8,11 +8,13 @@ TBD
 
 ### Prerequisites
 
-A browser that supports es6.
+A cli that supports es6.
 
 ### Installing
 
-N/A
+Create your own .env environment which contains the following items:
+   SPOTIFY_ID=#
+   SPOTIFY_SECRET=#
 
 ## Running the tests
 
@@ -24,15 +26,13 @@ N/A
 
 ### And coding style tests
 
-Run against https://jshint.com/ & https://validator.w3.org/.
+N/A
 
 ## Deployment
 
 N/A
 
 ## Built With
-
-* [MaterializeCss](https://materializecss.com/) - A toolkit used.
 
 * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
 
