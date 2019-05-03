@@ -1,0 +1,25 @@
+{
+  "name": "liri-bot",
+  "version": "1.0.0",
+  "description": "Language Interpretation and Recognition Interface",
+  "main": "script.js",
+  "scripts": {
+    "test": "node script.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JacobBraxley/liri-node-app.git"
+  },
+  "keywords": [
+    "LIRI"
+  ],
+  "author": "Jacob Braxley",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JacobBraxley/liri-node-app/issues"
+  },
+  "homepage": "https://github.com/JacobBraxley/liri-node-app#readme",
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}

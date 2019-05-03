@@ -4,7 +4,7 @@ HW8 - LIRI bot
 
 ## Getting Started
 
-Click on any Button to see images.  You can add new buttons.   You can click on gifs to start/stop them.
+TBD
 
 ### Prerequisites
 
@@ -32,7 +32,19 @@ N/A
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - A toolkit used.
+* [MaterializeCss](https://materializecss.com/) - A toolkit used.
+
+* [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+
+* [Axios](https://www.npmjs.com/package/axios)
+
+* [OMDB API](http://www.omdbapi.com)
+
+* [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
+
+* [Moment](https://www.npmjs.com/package/moment)
+
+* [DotEnv](https://www.npmjs.com/package/dotenv)
 
 ## Contributing
 
@@ -40,7 +52,7 @@ Please contact me in class if you wish to contribute to this project.
 
 ## Versioning
 
-Unvesioned.
+1.0.0
 
 ## Authors
 
