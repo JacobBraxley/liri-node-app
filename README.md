@@ -15,6 +15,9 @@ A cli that supports es6.
 Create your own .env environment which contains the following items:
    SPOTIFY_ID=#
    SPOTIFY_SECRET=#
+   IMDB_KEY=#
+
+Run npm install.
 
 ## Running the tests
 
