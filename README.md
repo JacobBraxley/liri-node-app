@@ -4,7 +4,7 @@ HW8 - LIRI bot
 
 ## Getting Started
 
-TBD
+Use node to run liri.js. (e.g. node liri)  Further instructions are included.
 
 ### Prerequisites
 

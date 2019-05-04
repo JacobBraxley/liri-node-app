@@ -1,13 +1,13 @@
 const dotenv = require("dotenv").config();
 const axios = require("axios");
 const keys = require("./keys.js");
-const spotify = require('node-spotify-api');
-const spotifyKey = new spotify(keys.spotify);
+const spotifyAPI = require('node-spotify-api');
+const spotify = new spotifyAPI(keys.spotify);
 const fs = require("fs");
 const moment = require("moment");
 
 const cmd = process.argv[2];
-const arg = process.argv[3];
+const arg = process.argv.splice(3).join("+"); //Take multi word songs, artists, etc and put them together.
 
 
 function output(txt, withNewLine = true) {
@@ -47,36 +47,26 @@ function concertThis(name) {
 
 
 function spotifyThisSong(songName) {
+    const songsToReturn = 1;
 
-    spotify.search({ type: 'track', query:  songName, limit: 1 })
+    spotify.search({ type: 'track', query: songName, limit: songsToReturn })
     .then(function(response) {
-        console.log(response);
+        for(let i = 0; i < songsToReturn && response.tracks.items.length; i++) {
+            breakOutput();
+
+            //Just get their names out the artists.  Join with a space.
+            output(response.tracks.items[i].artists.map(x => { return x.name; }).join(" "));
+            
+            output(response.tracks.items[i].name); //track name
+            output(response.tracks.items[i].preview_url);
+            output(response.tracks.items[i].album.name);
+        }
     })
     .catch(function(err) {
-        console.log(err);
+        if(err) {
+            console.log(err);
+        }
     });
-
-    //process.env.SPOTIFY_ID
-//process.env.SPOTIFY_SECRET
-
-
-//     * This will show the following information about the song in your terminal/bash window
-
-//     * Artist(s)
-
-//     * The song's name
-
-//     * A preview link of the song from Spotify
-
-//     * The album that the song is from
-
-//   * If no song is provided then your program will default to "The Sign" by Ace of Base.
-
-//   * You will utilize the [node-spotify-api](https://www.npmjs.com/package/node-spotify-api) package in order to retrieve song information from the Spotify API.
-
-//   * The Spotify API requires you sign up as a developer to generate the necessary credentials. You can follow these steps in order to generate a **client id** and **client secret**:
-
-//   * Step Four: On the next screen, scroll down to where you see your client id and client secret. Copy these values down somewhere, you'll need them to use the Spotify API and the [node-spotify-api package](https://www.npmjs.com/package/node-spotify-api).
 }
 
 function movieThis(movieName) {
@@ -112,13 +102,13 @@ function doWhatItSays() {
 
 switch(cmd) {
     case "concert-this":
-    concertThis(process.argv.splice(3).join("+"));
+    concertThis(arg ? arg : "Lindsey+Stirling"); //Default to Lindsey Strling if they didn't provide one.
     break;
     case "spotify-this-song":
-    spotifyThisSong(arg);
+    spotifyThisSong(arg ? arg : "Take Flight"); //Default to Take Flight if they didn't provide one.
     break;
     case "movie-this":
-    movieThis(arg);
+    movieThis(arg ? arg : "Gattaca"); //Default to Gattaca if they didn't provide one.
     break;
     case "do-what-it-says":
     doWhatItSays();
@@ -126,7 +116,7 @@ switch(cmd) {
     default:
     console.log(`Usage:`);
     console.log(`  node liri.js concert-this <artist/band name here>`);
-    console.log(`  node liri.js spotify-this-song '<song name here>`);
-    console.log(`  node liri.js movie-this '<movie name here>'`);
+    console.log(`  node liri.js spotify-this-song <song name here>`);
+    console.log(`  node liri.js movie-this <movie name here>`);
     console.log(`  node liri.js do-what-it-says`);
 }
